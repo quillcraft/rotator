@@ -35,6 +35,10 @@
             }
 
             function dragProgress(event) {
+                if (video.seeking) {
+                    return
+                }
+
                 const step = video.getBoundingClientRect().width / video.duration
                 const currentX = event.pageX ? event.pageX : event.touches[0].pageX
                 const timeChange = (currentX - params.mouseX) / (2 * step)

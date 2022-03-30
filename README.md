@@ -1,6 +1,4 @@
 # Rotator
-Sample of rotator widget with video
-
-Works fine in Safari, but video lags in Chrome & Firefox (
+An example of a rotator using a video file, not an image sequence.
 
 [Test page](https://quillcraft.github.io/rotator/)

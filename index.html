@@ -4,55 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotator widget</title>
+    <title>Rotator</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
-<body style="margin: 0;">
-    <div id="app" style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center;">
-        <video width="640" height="320" muted preload>
+<body>
+    <div id="app">
+        <video width="1920" height="1080" muted preload>
             <source src="sample.mp4" type="video/mp4"/>
         </video>
+        <div id="calltoaction">&larr; rotate &rarr;</div>
     </div>
-    <script>
-        (function() {
-            const video = document.querySelector('video')
-            const isTouchScreen = ('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0)
-            const events = {
-                start: isTouchScreen ? 'touchstart' : 'mousedown',
-                move: isTouchScreen ? 'touchmove' : 'mousemove',
-                end: isTouchScreen ? 'touchend' : 'mouseup',
-            }
-            const params = { 'timeValue': 0, 'mouseX': 0 }
-
-            video.addEventListener('dragstart', event => event.preventDefault(), false)
-            video.addEventListener(events.start, dragStart, false)
-            video.addEventListener(events.end, dragEnd, false)
-
-            function dragStart(event) {
-                video.addEventListener(events.move, dragProgress, false)
-
-                params.mouseX = event.pageX ? event.pageX : event.touches[0].pageX
-                params.timeValue = video.currentTime
-            }
-
-            function dragProgress(event) {
-                if (video.seeking) {
-                    return
-                }
-
-                const step = video.getBoundingClientRect().width / video.duration
-                const currentX = event.pageX ? event.pageX : event.touches[0].pageX
-                const timeChange = (currentX - params.mouseX) / (2 * step)
-                const change = params.timeValue + timeChange
-
-                video.currentTime = change < 0
-                    ? change % video.duration + video.duration
-                    : change % video.duration
-            }
-
-            function dragEnd() {
-                video.removeEventListener(events.move, dragProgress, false)
-            }
-        })()
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>

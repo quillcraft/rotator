@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+#app {
+    border-radius: 5px;
+
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 960px;
+}
+
+video {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#calltoaction {
+    opacity: .5;
+    user-select: none;
+
+    font-family: sans-serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}

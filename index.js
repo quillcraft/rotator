@@ -10,7 +10,6 @@
 
     const params = { 'timeValue': 0, 'mouseX': 0 }
 
-    video.addEventListener('dragstart', event => event.preventDefault(), false) // disable drag-and-drop in browser
     video.addEventListener(events.start, dragStart, false)
     video.addEventListener(events.end, dragEnd, false)
 
